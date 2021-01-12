@@ -1,5 +1,5 @@
 <template>
-	<!-- 柱状图区域 -->
+	<!-- 柱状图外边框区域 -->
 	<div class="chart-bar">
 		<dv-border-box-13>
 			<slot></slot>

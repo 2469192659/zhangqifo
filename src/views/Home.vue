@@ -1,7 +1,7 @@
 <template>
-	<!-- <div id="test"> -->
-		<!-- 外边框组件 -->
-		<dv-border-box-11 title="人员出入管理系统">
+	<div id="">
+		
+		
 			<!-- 厂区组件 -->
 			<plant-area></plant-area>
 			<!-- 分割线组件 -->
@@ -15,8 +15,8 @@
 			</chart-bar>
 			<!-- 轮播组件 -->
 			<Rotation :config1="config"></Rotation><!--:config1="config" -->
-		</dv-border-box-11>
-	<!-- </div> -->
+		
+	</div>
 		
 	
 	
@@ -157,7 +157,7 @@ export default{
 	  top: 0px;
 	  left: 0px;
 	  width: 100%;
-	  background-color: black;
+	  /* background-color: black; */
 	  text-align: center;
 	}
 	.dv-border-box-11{
@@ -172,7 +172,7 @@ export default{
 		height: 50px;
 		margin: 0 auto;
 	}
-	.dv-decoration-10{
+	.division .dv-decoration-10{
 		padding-top: 15px;
 	}
 	::-webkit-scrollbar {display:none}

@@ -1,4 +1,5 @@
 <template>
+	<!-- 表格组件 -->
 	<div class="rotation">
 		<el-table class="table_color" :data="config1" stripe style="width: 100%" height="93%" :row-class-name="tableRowClassName" :header-cell-style="getRowClass">
 		  <el-table-column prop="name" label="姓名"></el-table-column>

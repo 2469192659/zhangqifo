@@ -2,14 +2,25 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import dataV from'@jiaminghi/data-view'
 
+const Home = () => import('@/views/Home.vue')
+const Domainview = () =>import('@/DomainViews/Domainview.vue')
 Vue.use(dataV)
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path:'',
+	redirect:'/home'
   },
+  {
+	  path: '/home',
+	  component:Home
+  },
+  {
+	  path:'/domainview',
+	  component:Domainview
+  }
 ]
 
 const router = new VueRouter({

@@ -1,4 +1,5 @@
 <template>
+	<!-- 柱状图区域 -->
 	<div class="chart-item">
 		<ve-histogram :data="chartData" :extend="extend" height="280px"></ve-histogram>
 	</div>
@@ -35,7 +36,7 @@
 		      }
 		      return {
 		        chartData: {
-		          columns: ['厂区', '进入人次', '出去人次'],
+		          columns: ['厂区', '进入人次', '出去人次'],//这里请注意,该值与rows中的键名是一一对应的
 		          rows: [
 		            { '厂区': '秦一厂', '进入人次': 1393, '出去人次': 1093},
 		            { '厂区': '秦二厂', '进入人次': 3530, '出去人次': 3230},
@@ -48,6 +49,7 @@
 		    },
 			created(){
 				const self = this;
+				self.getData()
 				setInterval(self.getData,10000)
 				
 				// axios({
@@ -65,8 +67,10 @@
 						method:'post',
 						url:'/employee/factory.php'
 					}).then( response => {
-						// console.log(response);
 						self.chartData.rows=response;
+					}).catch( err =>
+					{
+						console.log(err);
 					})
 				}
 			}

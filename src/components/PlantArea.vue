@@ -1,18 +1,18 @@
 <template>
-	<!-- 各厂人数显示组件 -->
+	<!-- 厂区人数显示区域组件 -->
 	<div class="plant-area">
 		<dv-border-box-8 :reverse="true" :dur=10>
-			<plant-item>
-				<div slot="item-icon"><dv-active-ring-chart :config="config1" style="height:249px" /></div>
+			<plant-item title="秦一厂">
+				<div slot="item-icon" @click="jump1"><dv-active-ring-chart :config="config1" style="height:249px" /></div>
 			</plant-item>
-			<plant-item>
-				<div slot="item-icon"><dv-active-ring-chart :config="config2" style="height:249px" /></div>
+			<plant-item title="秦二厂">
+				<div slot="item-icon" @click="jump2"><dv-active-ring-chart :config="config2" style="height:249px" /></div>
 			</plant-item>
-			<plant-item>
-				<div slot="item-icon"><dv-active-ring-chart :config="config3" style="height:249px" /></div>
+			<plant-item title="秦三厂">
+				<div slot="item-icon" @click="jump3"><dv-active-ring-chart :config="config3" style="height:249px" /></div>
 			</plant-item>
-			<plant-item>
-				<div slot="item-icon"><dv-active-ring-chart :config="config4" style="height:249px" /></div>
+			<plant-item title="秦四厂">
+				<div slot="item-icon" @click="jump4"><dv-active-ring-chart :config="config4" style="height:249px" /></div>
 			</plant-item>
 			<!-- <plant-item>
 				<div slot="item-icon"><dv-active-ring-chart :config="config4" style="height:249px" /></div>
@@ -170,8 +170,21 @@
 						  showOriginValue: true
 					}
 				})
+			},
+			jump1(){
+				this.$router.push({path:'/domainview',query:{id:'1'}})
+			},
+			jump2(){
+				this.$router.push({path:'/domainview',query:{id:'2'}})
+			},
+			jump3(){
+				this.$router.push({path:'/domainview',query:{id:'3'}})
+			},
+			jump4(){
+				this.$router.push({path:'/domainview',query:{id:'4'}})
 			}
-		}
+		},
+		
 	}
 </script>
 

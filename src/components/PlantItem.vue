@@ -1,4 +1,5 @@
 <template>
+	<!-- 各厂区人数显示组件 -->
 	<div class="plant-item">
 		<slot name="item-icon"></slot>
 		<!-- <div class="item-name"><slot name="item-name"></slot></div> -->
@@ -14,7 +15,8 @@
 <style>
 	.plant-item{
 		flex: 1;
-		/* cursor:pointer */
+		/* cursor: default; */
+		cursor:pointer
 	}
 	
 	/* .item-name{
