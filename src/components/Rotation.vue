@@ -25,30 +25,6 @@
 			}
 		},
 		created(){
-			// const self = this;
-			// axios({
-			// 	method:'post',
-			// 	url:'http://localhost/employee/ecount.php'
-			// }).then( response => {
-			// 	console.log(response.data);
-			// 	var json = response.data;
-			// 	var arr1 = [];
-			// 	for(let i in json){
-			// 		arr1[i] = [];
-			// 		for(let j in json[i]){
-			// 			arr1[i].push(json[i][j]);
-			// 		}
-			// 	}
-			// 	self.arr = arr1;
-			// 	console.log(arr1);
-			// }).catch( err => {
-			// 	console.log(err);
-			// })
-			// this.config={data:[arr]}
-			/*--------------------------------------------------------上面自己的*/
-			
-			// this.getdata()
-			// this.timer = setInterval(this.getdata,2000)
 			
 		},
 		methods:{

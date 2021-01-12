@@ -100,19 +100,17 @@
 		},
 		created() {
 			const self = this;
-			setInterval(self.getNum,2000)
+			// setInterval(self.getNum,2000)
+			
 		},
 		methods:{
 			getNum(){
 				const self = this;
 				request({
 					method:'get',
-					url:'/employee/facnum.php'
+					url:'/vue-api/person/number'+'?areaId=1'
 				}).then( res =>{
-					let num1=parseInt(res[0].people_number)
-					let num2=parseInt(res[1].people_number)
-					let num3=parseInt(res[2].people_number)
-					let num4=parseInt(res[3].people_number)
+					let num1= res.data.areaPersonNumber
 					self.config1 = {
 						radius: '45%',
 						  activeRadius: '45%',
@@ -126,49 +124,71 @@
 						    fontSize: 20
 						  },
 						  showOriginValue: true
-					}
-					self.config2 = {
-						radius: '45%',
-						  activeRadius: '45%',
-						  data: [
-						    {
-						      name: '秦二厂',
-						      value: num2
-						    },
-						  ],
-						  digitalFlopStyle: {
-						    fontSize: 20
-						  },
-						  showOriginValue: true
-					}
-					self.config3 = {
-						radius: '45%',
-						  activeRadius: '45%',
-						  data: [
-						    {
-						      name: '秦三厂',
-						      value: num3
-						    },
-						  ],
-						  digitalFlopStyle: {
-						    fontSize: 20
-						  },
-						  showOriginValue: true
-					}
-					self.config4 = {
-						radius: '45%',
-						  activeRadius: '45%',
-						  data: [
-						    {
-						      name: '秦四厂',
-						      value: num4
-						    },
-						  ],
-						  digitalFlopStyle: {
-						    fontSize: 20
-						  },
-						  showOriginValue: true
-					}
+					};
+					request({
+						method:'get',
+						url:'/vue-api/person/number'+'?areaId=2'
+					}).then( res2 =>{
+						let num2 = res2.data.areaPersonNumber
+						self.config2 = {
+							radius: '45%',
+							  activeRadius: '45%',
+							  data: [
+							    {
+							      name: '秦二厂',
+							      value: num2
+							    },
+							  ],
+							  digitalFlopStyle: {
+							    fontSize: 20
+							  },
+							  showOriginValue: true
+						};
+						request({
+							method:'get',
+							url:'/vue-api/person/number'+'?areaId=3'
+						}).then( res3 =>{
+							let num3 = res3.data.areaPersonNumber
+							self.config3 = {
+								radius: '45%',
+								  activeRadius: '45%',
+								  data: [
+								    {
+								      name: '秦三厂',
+								      value: num3
+								    },
+								  ],
+								  digitalFlopStyle: {
+								    fontSize: 20
+								  },
+								  showOriginValue: true
+							};
+							request({
+								method:'get',
+								url:'/vue-api/person/number'+'?areaId=4'
+							}).then( res4 =>{
+								let num4 = res4.data.areaPersonNumber
+								self.config4 = {
+									radius: '45%',
+									  activeRadius: '45%',
+									  data: [
+									    {
+									      name: '方家山',
+									      value: num4
+									    },
+									  ],
+									  digitalFlopStyle: {
+									    fontSize: 20
+									  },
+									  showOriginValue: true
+								};
+							}).catch( err =>{
+								console.log(err);
+							})
+						})
+					})
+				}).catch( err =>{
+					console.log(err);
 				})
 			},
 			jump1(){

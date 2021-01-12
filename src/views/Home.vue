@@ -90,35 +90,12 @@ export default{
 		}
 	},
 	created(){
-		// const self = this;
-		// request({
-		// 	method:'post',
-		// 	url:'/employee/ecount.php'
-		// }).then( response => {
-		// 	var json = response;
-		// 	var arr1 = [];
-		// 	for(let i in json){
-		// 		arr1[i] = [];
-		// 		for(let j in json[i]){
-		// 			arr1[i].push(json[i][j]);
-		// 		}
-		// 	}
-		// 	// console.log(arr1);
-		// 	this.config={
-		// 		header:['姓名', '厂区', '状态'],
-		// 		data:arr1,
-		// 		index: true,
-		// 		columnWidth: [50],
-		// 		align: ['center'],
-		// 	}
-		// }).catch( err => {
-		// 	console.log(err);
-		// })
-		
-		// this.getdata()
-		// this.timer = setInterval(this.getdata(),2000)
-		
-		
+		request({
+			method:'get',
+			url:'/vue-api/person/info/list/'+'1'+'?pageSize=4'
+		}).then( res=>{
+			console.log(res);
+		})
 	},
 	// methods:{
 	// 	getdata(){

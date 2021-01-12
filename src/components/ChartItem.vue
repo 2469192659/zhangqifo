@@ -1,18 +1,19 @@
 <template>
 	<!-- 柱状图区域 -->
 	<div class="chart-item">
-		<ve-histogram :data="chartData" :extend="extend" height="280px"></ve-histogram>
+		<ve-histogram :data="chartData" :extend="extend" :settings="chartSettings" height="280px"></ve-histogram>
 	</div>
 </template>
 
 <script>
 	import axios from 'axios'
 	import {request} from '@/network/request.js'
+	import * as echarts from 'echarts'
 	export default{
 		name:"ChartItem",
 		data () {
 			  this.extend = {
-			          series: {
+			          series: {//柱状图上方文字颜色
 			            label: { show: true, position: "top",color:"#00FFFF",fontSize:14 },
 			          },
 					  xAxis:{//x轴
@@ -27,13 +28,19 @@
 						  	  fontSize:18
 						  }
 					  },
-					  legend:{//图例
+					  legend:{//图例样式
 						  textStyle:{
 							  color:"#FFF",
 							  fontSize:18
 						  },
 					  }
-		      }
+		      },
+			  this.chartSettings = {//更改图例,对象名必须和下面的columns一直
+				  legendName :{
+					  '进入人次':'进入',
+					  '出去人次':'出去'
+					  }
+			  }
 		      return {
 		        chartData: {
 		          columns: ['厂区', '进入人次', '出去人次'],//这里请注意,该值与rows中的键名是一一对应的
@@ -49,16 +56,15 @@
 		    },
 			created(){
 				const self = this;
-				self.getData()
-				setInterval(self.getData,10000)
-				
-				// axios({
+				// request({
 				// 	method:'get',
-				// 	url:'http://192.168.1.145:8181/fac',
-				// }).then( response => {
-				// 	console.log(response);
-				// 	self.chartData.rows=response.data;
+				// 	url:'/vue-api/person/records/statistics/person-time/fast'+'?areaId=1'+'?direction=-1'
+				// }).then( res=>{
+				// 	console.log(res);
 				// })
+				
+				// self.getData()
+				// setInterval(self.getData,10000)
 			},
 			methods:{
 				getData(){
@@ -72,7 +78,7 @@
 					{
 						console.log(err);
 					})
-				}
+				},
 			}
 	}
 </script>

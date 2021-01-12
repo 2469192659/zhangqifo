@@ -1,3 +1,3 @@
 window.g = {
-	ApiUrl:'http://localhost'
+	ApiUrl:'http://192.168.1.127:8180'
 }
