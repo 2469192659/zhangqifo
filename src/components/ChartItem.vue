@@ -51,32 +51,48 @@
 		            { '厂区': '秦四厂', '进入人次': 1723, '出去人次': 1423},
 		          ]
 		        },
-				getdata:[]
+				getdata:[],
+				obj1:{},
+				obj2:{},
+				obj3:{},
+				obj4:{},
+				arr:[],
 		      }
 		    },
 			created(){
-				const self = this;
-				// request({
-				// 	method:'get',
-				// 	url:'/vue-api/person/records/statistics/person-time/fast'+'?areaId=1'+'?direction=-1'
-				// }).then( res=>{
-				// 	console.log(res);
-				// })
-				
-				// self.getData()
-				// setInterval(self.getData,10000)
+				this.getData();
+				setInterval(this.getData,10000)
 			},
 			methods:{
 				getData(){
-					const self = this;
 					request({
-						method:'post',
-						url:'/employee/factory.php'
-					}).then( response => {
-						self.chartData.rows=response;
-					}).catch( err =>
-					{
-						console.log(err);
+						method:'get',
+						url:'/vue-api/person/records/statistics/person-time/fast/list?areaIdList=1&areaIdList=2&areaIdList=3&areaIdList=4'
+					}).then(res =>{
+						this.obj1['厂区']="秦一厂"
+						this.obj1['进入人次']=res.data.inTimes[1]
+						this.obj1['出去人次']=res.data.outTimes[1]
+						this.arr.push(this.obj1)
+						
+						this.obj2['厂区']="秦二厂"
+						this.obj2['进入人次']=res.data.inTimes[2]
+						this.obj2['出去人次']=res.data.outTimes[2]
+						this.arr.push(this.obj2)
+						
+						this.obj3['厂区']="秦三厂"
+						this.obj3['进入人次']=res.data.inTimes[3]
+						this.obj3['出去人次']=res.data.outTimes[3]
+						this.arr.push(this.obj3)
+						
+						this.obj4['厂区']="方家山"
+						this.obj4['进入人次']=res.data.inTimes[4]
+						this.obj4['出去人次']=res.data.outTimes[4]
+						this.arr.push(this.obj4)
+						
+						this.chartData.rows=this.arr
+						
+						this.arr=[];
+						// this.arr.splice(0,this.arr.length);
 					})
 				},
 			}

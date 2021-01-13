@@ -100,7 +100,7 @@
 		},
 		created() {
 			const self = this;
-			// setInterval(self.getNum,2000)
+			setInterval(self.getNum,1000)
 			
 		},
 		methods:{
@@ -188,7 +188,7 @@
 						})
 					})
 				}).catch( err =>{
-					console.log(err);
+					// console.log(err);
 				})
 			},
 			jump1(){

@@ -2,14 +2,15 @@
 	<!-- 表格组件 -->
 	<div class="rotation">
 		<el-table class="table_color" :data="config1" stripe style="width: 100%" height="93%" :row-class-name="tableRowClassName" :header-cell-style="getRowClass">
-		  <el-table-column prop="name" label="姓名"></el-table-column>
-		  <el-table-column prop="extEventCardNo" label="身份证号"></el-table-column>
-			<el-table-column prop="extTemp" label="体温"></el-table-column>
+			<el-table-column prop="memberName" label="姓名" :show-overflow-tooltip="true"></el-table-column>
+			<el-table-column prop="idCard" label="身份证号" :show-overflow-tooltip="true"></el-table-column>
+			<el-table-column prop="areaName" label="所在区域" :show-overflow-tooltip="true"></el-table-column>
+			<el-table-column prop="deptName" label="部门"></el-table-column>
+			<el-table-column prop="temp" label="体温"></el-table-column>
 			<el-table-column prop="healthCode" label="健康码"></el-table-column>
-			<el-table-column prop="extEventDirection" label="进出方向"></el-table-column>
-			<el-table-column prop="srcName" label="事件源名称" :show-overflow-tooltip="true"></el-table-column>
-			<el-table-column prop="srcParentIndex" label="设备号" :show-overflow-tooltip="true"></el-table-column>
-			<el-table-column prop="happenTime" label="发生时间"></el-table-column>
+			<el-table-column prop="direction" label="进出方向"></el-table-column>
+			<el-table-column prop="deviceName" label="设备名称" :show-overflow-tooltip="true"></el-table-column>
+			<el-table-column prop="verifyTimeStamp" label="发生时间" :show-overflow-tooltip="true"></el-table-column>
 		</el-table>
 	</div>
 </template>

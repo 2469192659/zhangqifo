@@ -41,79 +41,44 @@ export default{
 	
 	data(){
 		return{
-			"config":[{
-				  Name: '王小虎',
-				  IdNum: '330881********3919',
-				  temp: '36.8',
-				  helthy:'健康',
-				  ExtEventInOut:'0',
-				  srcName:'asdafs',
-				  srcParentIndex:'safasgasd',
-				  happenTime:'2020/12/15'
-				}, 
-				{
-				  Name: '王小虎',
-				  IdNum: '330881********3919',
-				  temp: '36.8',
-				  ExtEventInOut:'0',
-				  srcName:'asdafs',
-				  srcParentIndex:'safasgasd',
-				  happenTime:'2020/12/15'
-				},
-				{
-				  Name: '王小虎',
-				  IdNum: '330881********3919',
-				  temp: '36.8',
-				  ExtEventInOut:'0',
-				  srcName:'asdafs',
-				  srcParentIndex:'safasgasd',
-				  happenTime:'2020/12/15'
-				},
-				{
-				  Name: '王小虎',
-				  IdNum: '330881********3919',
-				  temp: '36.8',
-				  ExtEventInOut:'0',
-				  srcName:'asdafs',
-				  srcParentIndex:'safasgasd',
-				  happenTime:'2020/12/15'
-				},
-				{
-				  Name: '王小虎',
-				  IdNum: '330881********3919',
-				  temp: '36.8',
-				  ExtEventInOut:'0',
-				  srcName:'asdafs',
-				  srcParentIndex:'safasgasd',
-				  happenTime:'2020/12/15'
-				}],
+			"config":[
+				// {
+				//   memberName: '',
+				//   idCard: '',
+				//   areaName:'',
+				//   deptName:'',
+				//   temp: '',
+				//   healthCode:'',
+				//   direction:'',
+				//   deviceName:'',
+				//   verifyTimeStamp:''
+				// },
+				],
+				getData:[]
 		}
 	},
 	created(){
-		request({
-			method:'get',
-			url:'/vue-api/person/info/list/'+'1'+'?pageSize=4'
-		}).then( res=>{
-			console.log(res);
-		})
+		this.getForm()
+		setInterval(this.getForm,5000)
 	},
-	// methods:{
-	// 	getdata(){
-	// 			axios({
-	// 				method:'get',
-	// 				url:'http://192.168.1.145:8181/human'
-	// 			}).then( res => {
-	// 				console.log(res.data);
-	// 				this.config={
-	// 					header:['id','姓名', '厂区', '状态'],
-	// 					data:res.data,
-	// 					index: true,
-	// 					columnWidth: [50],
-	// 					align: ['center'],
-	// 					}
-	// 			})
-	// 		}
-	// }
+	methods:{
+		getForm(){
+			request({
+				method:'get',
+				url:'/vue-api/person/info/list/'+'1'+'?pageSize=4'
+			}).then( res=>{
+				// console.log(res.data.records);
+				self.getData=res.data.records;
+				self.getData.forEach(item =>{
+					item.direction=item.direction===1? '进入' : '出去';
+					item.idCard=item.idCard.length===18? item.idCard.substr(0,6)+"********"+item.idCard.substr(14) : item.idCard;
+					item.temp=item.temp? item.temp.toFixed(1) : item.temp;
+					item.healthCode=item.healthCode==="绿码"? '绿码' : '健康码异常';
+				})
+				this.config=res.data.records
+			})
+		}
+	}
 }
 
 </script>
